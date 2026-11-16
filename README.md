@@ -25,9 +25,9 @@
 
 The skill activates automatically when the user mentions:
 
-- `optimasi router`, `internet lambat`, `ping tinggi`, `jitter tinggi`
-- `bufferbloat`, `Wi-Fi lemot`, `web lambat buka`
-- `router optimasi`, `speedtest tidak sesuai`, `optimize network`
+- `optimize router`, `slow internet`, `high ping`, `high jitter`
+- `bufferbloat`, `slow Wi-Fi`, `web loads slowly`
+- `router optimize`, `speedtest not matching`, `optimize network`
 - `fix high ping`, `reduce jitter`
 - Shares a speedtest result with high jitter/ping and asks what to do
 - Pastes router/ONT web UI screenshots or describes router settings
@@ -73,7 +73,7 @@ net-tune/
 ## Usage example
 
 ```
-User: optimasi router gua, internet lambat, jitter tinggi
+User: optimize my router, internet is slow, high jitter
 Claude: [activates net-tune skill]
   → Asks for router URL + credentials
   → Navigates via Playwright, extracts device profile
