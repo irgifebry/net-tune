@@ -25,7 +25,7 @@ When the user provides a router/ONT web UI URL (e.g., `http://192.168.1.1`, `htt
 ### When to use Playwright
 - User gives router IP + credentials → automate the entire optimization
 - User shares screenshots of router UI → parse them, then automate changes via Playwright
-- User says "cek", "optimasi", "ubah setting" with a known router IP → navigate and apply
+- User says "check", "optimize", "change settings" with a known router IP → navigate and apply
 - Any time the router web UI is accessible from the agent's environment
 
 ### Playwright workflow for router optimization
@@ -63,12 +63,12 @@ If Playwright cannot connect (router not reachable, no browser available, or use
 
 **Before starting Phase 0 or any diagnosis, if the user has not yet provided router access details, ASK FIRST:**
 
-> "Untuk optimasi langsung via browser (Playwright), saya butuh akses ke web UI router/ONT kamu:
-> 1. **URL/IP router** (contoh: `http://192.168.1.1` atau `http://192.168.100.1`)
-> 2. **Username** (biasanya `admin`, `adminisp`, `user`)
+> "To optimize directly via browser (Playwright), I need access to your router/ONT web UI:
+> 1. **Router URL/IP** (e.g., `http://192.168.1.1` or `http://192.168.100.1`)
+> 2. **Username** (usually `admin`, `adminisp`, `user`)
 > 3. **Password**
 >
-> Kalau tidak mau berikan credentials, saya bisa pandu manual step-by-step. Mau yang mana?"
+> If you'd rather not share credentials, I can guide you step-by-step manually. Which do you prefer?"
 
 **Rules:**
 - If user provides URL + credentials → proceed with Playwright automation (Phase 0 via browser extraction)
@@ -104,7 +104,7 @@ Before any recommendation, build a device profile by asking the user (or extract
 | **ISP speed tier** | Baseline for target | 150/100 Mbps |
 | **Measured speedtest** | Actual goodput | DL 114 / UL 111 / ping 2 / jitter 219 |
 | **Connection medium** | LAN vs Wi-Fi 2.4 vs 5 | "Wi-Fi 5G, HP 3m from router" |
-| **Symptom pattern** | Constant vs under-load | "Web lambat buka tapi speedtest ok" |
+| **Symptom pattern** | Constant vs under-load | "web loads slowly but speedtest is fine" |
 | **Active clients** | Load & airtime contention | "10 devices, mix streaming/gaming" |
 | **GPON/optical power** (if fiber) | Signal health | Rx -20.22 dBm (healthy: -8 to -27) |
 
@@ -158,7 +158,7 @@ Audit these per band (2.4G and 5G separately):
 - **Upstream:** Use fastest for user's region (Cloudflare 1.1.1.1, Google 8.8.8.8, Quad9 9.9.9.9)
 - **DoH/DoT:** Only if CPU is strong; encryption adds latency on weak CPUs
 - **IPv6:** Ensure either fully working (with ICMPv6 allowed) or fully disabled — half-configured IPv6 causes 2-5s delays on every new page load
-- **Symptom "web lambat buka tapi speedtest ok":** almost always DNS or MTU
+- **Symptom "web loads slowly but speedtest is fine":** almost always DNS or MTU
 
 ---
 
@@ -237,7 +237,7 @@ Adapt terminology to the device's ecosystem:
 
 When the device lacks a feature (e.g., no QoS, no SQM, no channel control), be honest:
 
-> "Perangkat ini tidak mendukung [fitur X]. Optimasi di level ini sudah maksimal. Untuk peningkatan lebih lanjut (jitter, bufferbloat, throughput under load), opsi terbaik adalah menambahkan router ber-QoS (mis. MikroTik hAP lite / TP-Link Archer dengan SQM) di belakang ONT ini sebagai router utama, lalu ONT dikonfigurasi Bridge Mode."
+> "This device does not support [feature X]. Optimization at this level is already maxed out. For further improvement (jitter, bufferbloat, throughput under load), the best option is to add a QoS-capable router (e.g., MikroTik hAP lite / TP-Link Archer with SQM) behind this ONT as the main router, then set the ONT to Bridge Mode."
 
 Do not fabricate capabilities the device doesn't have.
 
@@ -262,7 +262,7 @@ Use this skill when the user:
 - Shares speedtest results with high jitter/ping/loss
 - Says internet is slow, web loads slowly, high ping, lag in games/calls
 - Pastes router/ONT web UI screenshots or describes settings
-- Asks "kenapa internet lambat", "optimasi router", "bufferbloat", "jitter tinggi"
+- Asks "why is internet slow", "optimize router", "bufferbloat", "high jitter"
 - Asks to check/audit router configuration
 - Mentions specific router brands/models in context of performance
 
